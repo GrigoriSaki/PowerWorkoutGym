@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power Workout Gym - Customer Management</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="assets/images/logo.png" alt="Power Workout Gym Logo" class="logo-img">
+                <div class="logo-text">
+                    <span class="brand-title">POWER WORKOUT</span>
+                    <span class="brand-subtitle">GYM MANAGEMENT</span>
+                </div>
+            </div>
+            <nav class="nav-bar">
+                <ul>
+                    <li><a href="#" class="nav-link active"><i class="fa-solid fa-users"></i> Customers</a></li>
+                    <li><a href="#" class="nav-link"><i class="fa-solid fa-house"></i> Home</a></li>
+                    <li><a href="#" class="nav-link logout-btn"><i class="fa-solid fa-right-from-bracket"></i>
+                            Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="dashboard-header">
+            <div class="header-title">
+                <h1>Member Directory</h1>
+                <p>Manage and track gym memberships, renewals, and expiration statuses.</p>
+            </div>
+            <button class="btn btn-primary" id="addMemberBtn">
+                <i class="fa-solid fa-plus"></i> Add New Member
+            </button>
+        </div>
+
+        <!-- Dashboard Stats Cards -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon icon-total">
+                    <i class="fa-solid fa-address-card"></i>
+                </div>
+                <div class="stat-info">
+                    <span class="stat-label">Total Members</span>
+                    <span class="stat-value" id="statTotal">0</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon icon-active">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <div class="stat-info">
+                    <span class="stat-label">Active Members</span>
+                    <span class="stat-value" id="statActive">0</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon icon-warning">
+                    <i class="fa-solid fa-clock"></i>
+                </div>
+                <div class="stat-info">
+                    <span class="stat-label">Expiring Soon</span>
+                    <span class="stat-value" id="statWarning">0</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon icon-expired">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+                <div class="stat-info">
+                    <span class="stat-label">Expired</span>
+                    <span class="stat-value" id="statExpired">0</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table Container Card -->
+        <div class="table-card">
+            <div class="table-toolbar">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="searchInput" placeholder="Search by member name or phone...">
+                </div>
+                <div class="filter-box">
+                    <i class="fa-solid fa-filter filter-icon"></i>
+                    <select id="statusFilter">
+                        <option value="all">All Statuses</option>
+                        <option value="active">Active</option>
+                        <option value="warning">Almost Expired</option>
+                        <option value="expired">Expired</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table id="membersTable">
+                    <thead>
+                        <tr>
+                            <th>Member Name</th>
+                            <th>Phone Number</th>
+                            <th>Membership Type</th>
+                            <th>Expiry Date</th>
+                            <th>Status</th>
+                            <th class="text-right">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="members-table-body"></tbody>
+                </table>
+            </div>
+
+            <div class="table-footer">
+                <span class="showing-text">Showing <strong id="showingCount">0</strong> of <strong
+                        id="totalCount">0</strong>
+                    members</span>
+            </div>
+        </div>
+    </main>
+
+    <dialog id="addMemberModal">
+        <div class="modal-header">
+            <div class="modal-header-info">
+                <div class="modal-icon">
+                    <i class="fa-solid fa-user-plus"></i>
+                </div>
+                <div>
+                    <h2>Add New Member</h2>
+                    <p>Enter member details to create a new gym registration.</p>
+                </div>
+            </div>
+            <button type="button" class="modal-close-btn" id="closeModalIconBtn" aria-label="Close modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <form id="addMemberForm" class="modal-body">
+            <div class="form-grid">
+                <div class="form-group full-width">
+                    <label for="memberName"><i class="fa-solid fa-user"></i> Member Name</label>
+                    <div class="input-icon-wrapper">
+                        <i class="fa-solid fa-user input-icon"></i>
+                        <input type="text" id="memberName" name="memberName" placeholder="e.g. Alex Johnson" required>
+                    </div>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="memberPhone"><i class="fa-solid fa-phone"></i> Phone Number</label>
+                    <div class="input-icon-wrapper">
+                        <i class="fa-solid fa-phone input-icon"></i>
+                        <input type="tel" id="memberPhone" name="memberPhone" placeholder="e.g. 06-12345678" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="passType"><i class="fa-solid fa-id-card"></i> Membership Type</label>
+                    <div class="input-icon-wrapper">
+                        <i class="fa-solid fa-id-card input-icon"></i>
+                        <select id="passType" name="passType" required>
+                            <option value="" disabled selected>Choose Type</option>
+                            <option value="week">1-week</option>
+                            <option value="month">1-month</option>
+                            <option value="2months">2-months</option>
+                            <option value="year">1-year</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="passExpiry"><i class="fa-solid fa-calendar-days"></i> Expiry Date</label>
+                    <div class="input-icon-wrapper">
+                        <i class="fa-solid fa-calendar-days input-icon"></i>
+                        <input type="date" id="passExpiry" name="passExpiry" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-actions">
+                <button type="button" class="btn btn-secondary" id="cancelBtn">
+                    <i class="fa-solid fa-xmark"></i> Cancel
+                </button>
+                <button type="submit" class="btn btn-primary" id="saveMemberBtn">
+                    <i class="fa-solid fa-check"></i> Save Member
+                </button>
+            </div>
+        </form>
+    </dialog>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <p><strong>Power Workout Gym</strong> &bull; All rights reserved &bull; &copy; 2026</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
