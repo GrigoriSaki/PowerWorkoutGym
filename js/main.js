@@ -61,7 +61,7 @@ function getStatusType(expiryDate) {
     const expiry = new Date(expiryDate);
     const daysLeft = Math.ceil((expiry - today) / (1000 * 60 * 60 * 24));
     if (daysLeft < 0) return 'expired';
-    if (daysLeft <= 7) return 'warning';
+    if (daysLeft < 7) return 'warning';
     return 'active';
 }
 
@@ -152,6 +152,49 @@ document.addEventListener('DOMContentLoaded', () => {
         return result;
     }
 
+    // Handle add member form submission
+    async function handleAddMember(e) {
+        e.preventDefault();
+
+        const name = document.getElementById('memberName').value;
+        const phone = document.getElementById('memberPhone').value;
+        const passType = document.getElementById('passType').value;
+        const passExpiry = document.getElementById('passExpiry').value;
+
+        if (!name || !phone || !passType || !passExpiry)
+            return;
+
+        const { data: newMember, error: memberError } = await supabaseClient
+            .from('members')
+            .insert({ name: name, phone: phone })
+            .select()
+            .single();
+
+        if (memberError) {
+            console.error("Error creating member", memberError);
+            return;
+        }
+
+        const { data: newPass, error: passError } = await supabaseClient
+            .from('passes')
+            .insert({
+                customer_id: newMember.id,
+                pass_type: passType,
+                start_date: new Date().toISOString().split('T')[0],
+                expiry_date: passExpiry
+            });
+
+        if (passError) {
+            console.error("Error creating pass", passError);
+            return;
+        }
+
+        closeModal();
+        addMemberForm.reset();
+        loadMembers();
+
+    }
+
 
     // Event Listeners
     if (searchInput) searchInput.addEventListener('input', filterTable);
@@ -173,6 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const addMemberModal = document.getElementById('addMemberModal');
     const cancelBtn = document.getElementById('cancelBtn');
     const closeModalIconBtn = document.getElementById('closeModalIconBtn');
+    const saveMemberBtn = document.getElementById('saveMemberBtn');
 
     const closeModal = () => {
         if (addMemberModal) addMemberModal.close();
@@ -180,6 +224,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (cancelBtn) cancelBtn.addEventListener('click', closeModal);
     if (closeModalIconBtn) closeModalIconBtn.addEventListener('click', closeModal);
+    if (saveMemberBtn) saveMemberBtn.addEventListener('click', handleAddMember);
+
+
+
 
 
     // Attach row button click handlers
