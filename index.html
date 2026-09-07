@@ -134,12 +134,12 @@
     <dialog id="addMemberModal">
         <div class="modal-header">
             <div class="modal-header-info">
-                <div class="modal-icon">
+                <div class="modal-icon" id="modalIcon">
                     <i class="fa-solid fa-user-plus"></i>
                 </div>
                 <div>
-                    <h2>Add New Member</h2>
-                    <p>Enter member details to create a new gym registration.</p>
+                    <h2 id="modalTitle">Add New Member</h2>
+                    <p id="modalSubTitle">Enter member details to create a new gym registration.</p>
                 </div>
             </div>
             <button type="button" class="modal-close-btn" id="closeModalIconBtn" aria-label="Close modal">
@@ -194,7 +194,7 @@
                     <i class="fa-solid fa-xmark"></i> Cancel
                 </button>
                 <button type="submit" class="btn btn-primary" id="saveMemberBtn">
-                    <i class="fa-solid fa-check"></i> Save Member
+                    <i class="fa-solid fa-check"></i> <span id="saveBtnText">Save Member</span>
                 </button>
             </div>
         </form>
