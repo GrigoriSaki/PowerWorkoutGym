@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logowanie - Power Workout Gym</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+    <div class="login-page-wrapper">
+        <div class="login-container">
+            <div class="login-card">
+                <div class="login-brand-header">
+                    <img src="assets/images/logo.png" alt="Power Workout Gym Logo" class="login-logo-img">
+                    <div>
+                        <h1 class="login-brand-title">Zaloguj się</h1>
+                        <p class="login-brand-subtitle">Uzyskaj dostęp do panelu zarządzania siłownią</p>
+                    </div>
+                </div>
+
+                <form id="loginForm" class="login-form">
+                    <div id="loginError" class="login-error-alert" role="alert"></div>
+
+                    <div class="form-group">
+                        <label for="email"><i class="fa-solid fa-envelope"></i> Adres E-mail</label>
+                        <div class="input-icon-wrapper">
+                            <input type="email" id="email" required autocomplete="email">
+                            <i class="fa-solid fa-envelope input-icon"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password"><i class="fa-solid fa-lock"></i> Hasło</label>
+                        <div class="input-icon-wrapper">
+                            <input type="password" id="password" required autocomplete="current-password">
+                            <i class="fa-solid fa-lock input-icon"></i>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <i class="fa-solid fa-right-to-bracket"></i> Zaloguj się
+                    </button>
+                </form>
+            </div>
+
+            <p class="login-footer-text">&copy; 2026 <strong>Power Workout Gym</strong>. Wszelkie prawa zastrzeżone.</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/login.js"></script>
+</body>
+
+</html>

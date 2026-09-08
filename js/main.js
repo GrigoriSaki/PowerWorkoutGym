@@ -6,6 +6,47 @@ const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_
 let allMembers = [];
 let editingMemberId = null;
 
+// logout functionality
+const logoutBtn = document.querySelector('.logout-btn');
+logoutBtn.addEventListener('click', async (e) => {
+    e.preventDefault();
+    await supabaseClient.auth.signOut();
+
+    window.location.href = '/login.html';
+
+})
+
+// delete member from database
+async function deleteMember(memberId) {
+    if (!confirm('Are you sure you want to delete this member?')) return;
+
+    //delete all passes of member
+    const { error: passError } = await supabaseClient
+        .from('passes')
+        .delete()
+        .eq('customer_id', memberId);
+
+    if (passError) {
+        console.error("Error deleting passes", passError);
+        return;
+    }
+
+    // delete member from database
+    const { error: memberError } = await supabaseClient
+        .from('members')
+        .delete()
+        .eq('id', memberId);
+
+    if (memberError) {
+        console.error("Error deleting member", memberError);
+        alert('Failed to delete member.');
+        return;
+    }
+
+    loadMembers();
+}
+
+
 // load members from database
 async function loadMembers() {
     const { data: members, error } = await supabaseClient
@@ -107,8 +148,8 @@ function renderMembers(membersList) {
       <td>${lastPass ? getStatusBadge(lastPass.expiry_date) : '-'}</td>
       <td class="text-right">
         <div class="action-buttons">
-          <button class="icon-btn renew-btn" title="Renew Membership"><i class="fa-solid fa-arrows-rotate"></i></button>
           <button class="icon-btn edit-btn" title="Edit Member"><i class="fa-solid fa-pen-to-square"></i></button>
+          <button class="icon-btn delete-btn" title="Delete Member"><i class="fa-solid fa-trash-can"></i></button>
         </div>
       </td>
     `;
@@ -328,19 +369,21 @@ document.addEventListener('DOMContentLoaded', () => {
     if (closeModalIconBtn) closeModalIconBtn.addEventListener('click', closeModal);
     if (addMemberForm) addMemberForm.addEventListener('submit', handleSaveMember);
 
-    // Event Delegation for table edit & renew buttons
+    // Event Delegation for table edit & delete buttons
     const tbody = document.getElementById('members-table-body');
     if (tbody) {
         tbody.addEventListener('click', (e) => {
             const editBtn = e.target.closest('.edit-btn');
-            const renewBtn = e.target.closest('.renew-btn');
+            const deleteBtn = e.target.closest('.delete-btn');
             const row = e.target.closest('tr');
             if (!row) return;
 
             const memberId = row.dataset.id;
 
-            if (editBtn || renewBtn) {
+            if (editBtn) {
                 openEditModal(memberId);
+            } else if (deleteBtn) {
+                deleteMember(memberId);
             }
         });
     }

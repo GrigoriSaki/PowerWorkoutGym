@@ -675,6 +675,12 @@ td.status-expired {
     background: #eff6ff;
 }
 
+.delete-btn:hover {
+    color: #b91c1c;
+    border-color: #fecaca;
+    background: #fef2f2;
+}
+
 /* Table Footer */
 .table-footer {
     padding: 1rem 1.5rem;
