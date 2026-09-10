@@ -6,10 +6,17 @@ const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 document.getElementById("passCheckForm").addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const phoneNumber = document.getElementById("phoneNumber").value;
+    const phoneNumber = document.getElementById("phoneNumber").value.trim()
+        .replace(/[^\d+]/g, "");
     const result = document.getElementById("result");
+    const phoneRegex = /^\+\d{8,15}$/;
     if (phoneNumber === "") {
         result.innerHTML = "Voer een telefoonnummer in.";
+        return;
+    }
+
+    if (!phoneRegex.test(phoneNumber)) {
+        result.innerHTML = "Voer de gegevens in het juiste formaat in (e.g. +31612345678).";
         return;
     }
 

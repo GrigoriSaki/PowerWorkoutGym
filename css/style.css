@@ -973,3 +973,18 @@ dialog::backdrop {
         grid-column: span 1;
     }
 }
+
+/* Validation message for phone */
+.phone-validation-message {
+    display: none;
+    margin-top: 4px;
+    font-size: 0.85rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.phone-validation-message.error {
+    background: #fee2e2;
+    color: #dc2626;
+    border: 1px solid #fecaca;
+}

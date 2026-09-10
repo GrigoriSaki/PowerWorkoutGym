@@ -263,9 +263,31 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
 
         const name = document.getElementById('memberName').value.trim();
-        const phone = document.getElementById('memberPhone').value.trim();
+        const phone = document.getElementById('memberPhone').value.trim()
+            .replace(/[^\d+]/g, "");
         const passTypeValue = document.getElementById('passType').value;
         const passExpiryValue = document.getElementById('passExpiry').value;
+
+        const phoneRegex = /^\+\d{8,15}$/;
+        if (!phoneRegex.test(phone)) {
+            const message = document.getElementById("phoneMessage");
+            message.className = "phone-validation-message error";
+            message.textContent =
+                "Gebruik een internationaal nummer, bijvoorbeeld +31612345678";
+            message.style.display = "block";
+            return;
+        }
+
+        const existingPhone = allMembers.some(m => m.phone === phone);
+
+        if (existingPhone) {
+            const message = document.getElementById("phoneMessage");
+            message.className = "phone-validation-message error";
+            message.textContent =
+                "Dit telefoonnummer is al geregistreerd in het systeem.";
+            message.style.display = "block";
+            return;
+        }
 
         if (!name || !phone || !passTypeValue || !passExpiryValue)
             return;
