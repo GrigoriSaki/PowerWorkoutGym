@@ -87,3 +87,15 @@
     font-size: 0.825rem;
     color: var(--text-muted);
 }
+
+.btn-secondary {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 24px;
+    background: linear-gradient(135deg, #5e3fd3 0%, #362597 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: transform 0.2s ease;
+}

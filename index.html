@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Power Workout Gym - Customer Management</title>
+    <title>Power Workout Gym - Home</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,201 +15,388 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/homePage.css">
 </head>
 
 <body>
+    <!-- Site Header & Navigation -->
     <header class="site-header">
         <div class="header-container">
             <div class="logo-container">
                 <img src="assets/images/logo.png" alt="Power Workout Gym Logo" class="logo-img">
                 <div class="logo-text">
-                    <span class="brand-title">POWER WORKOUT</span>
-                    <span class="brand-subtitle">GYM MANAGEMENT</span>
+                    <span class="brand-title" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });"
+                        style="cursor: pointer;">POWER WORKOUT</span>
+                    <span class="brand-subtitle">PREMIUM FITNESS CLUB</span>
                 </div>
             </div>
             <nav class="nav-bar">
                 <ul>
-                    <li><a href="index.html" class="nav-link active"><i class="fa-solid fa-users"></i> Customers</a>
-                    </li>
-                    <li><a href="homePage.html" class="nav-link"><i class="fa-solid fa-house"></i> Home</a></li>
-                    <li><a href="#" class="nav-link logout-btn"><i class="fa-solid fa-right-from-bracket"></i>
-                            Logout</a></li>
+                    <li><a href="#about" class="nav-link"><i class="fa-solid fa-circle-info"></i> Over Ons</a></li>
+                    <li><a href="#zones" class="nav-link"><i class="fa-solid fa-layer-group"></i> Zones</a></li>
+                    <li><a href="#features" class="nav-link"><i class="fa-solid fa-star"></i> Voordelen</a></li>
+                    <li><a href="#pricing" class="nav-link"><i class="fa-solid fa-tags"></i> Abonnement</a></li>
+                    <li><a href="#contact" class="nav-link"><i class="fa-solid fa-location-dot"></i> Contact</a></li>
+                    <li><a href="login.html" class="nav-link logout-btn"><i class="fa-solid fa-user-lock"></i>
+                            Beheerder / Login</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
+    <!-- Main Content Area -->
     <main class="main-content">
-        <div class="dashboard-header">
-            <div class="header-title">
-                <h1>Member Directory</h1>
-                <p>Manage and track gym memberships, renewals, and expiration statuses.</p>
-            </div>
-            <button class="btn btn-primary" id="addMemberBtn">
-                <i class="fa-solid fa-plus"></i> Add New Member
-            </button>
-        </div>
 
-        <!-- Dashboard Stats Cards -->
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-icon icon-total">
-                    <i class="fa-solid fa-address-card"></i>
-                </div>
-                <div class="stat-info">
-                    <span class="stat-label">Total Members</span>
-                    <span class="stat-value" id="statTotal">0</span>
-                </div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon icon-active">
-                    <i class="fa-solid fa-circle-check"></i>
-                </div>
-                <div class="stat-info">
-                    <span class="stat-label">Active Members</span>
-                    <span class="stat-value" id="statActive">0</span>
-                </div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon icon-warning">
-                    <i class="fa-solid fa-clock"></i>
-                </div>
-                <div class="stat-info">
-                    <span class="stat-label">Expiring Soon</span>
-                    <span class="stat-value" id="statWarning">0</span>
+        <!-- Hero Banner Section -->
+        <section class="hero-section">
+            <img src="assets/images/hero-banner.jpg" alt="Power Workout Gym Interieur" class="hero-bg-image">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <span class="hero-badge">
+                    <i class="fa-solid fa-bolt"></i> Premium Fitness & Training
+                </span>
+                <h1 class="hero-title">
+                    Verleg Je Grenzen bij <span class="highlight">Power Workout Gym</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Ontdek een moderne trainingsruimte ontworpen voor jouw doelen. Professionele krachtapparatuur,
+                    cardiozone met panoramisch uitzicht en ondersteuning van gecertificeerde trainers.
+                </p>
+                <div class="hero-actions">
+                    <a href="#pass-check" class="btn btn-primary">
+                        <i class="fa-solid fa-dumbbell"></i> Controleer Abonnement
+                    </a>
+                    <a href="#pricing" class="btn btn-glass">
+                        <i class="fa-solid fa-tags"></i> Bekijk Abonnement
+                    </a>
                 </div>
             </div>
-            <div class="stat-card">
-                <div class="stat-icon icon-expired">
-                    <i class="fa-solid fa-triangle-exclamation"></i>
-                </div>
-                <div class="stat-info">
-                    <span class="stat-label">Expired</span>
-                    <span class="stat-value" id="statExpired">0</span>
-                </div>
+        </section>
+
+        <!-- Quick Stats Counter Bar -->
+        <div class="quick-stats-bar">
+            <div class="stat-box">
+                <div class="stat-box-number">1500 m²</div>
+                <div class="stat-box-label">Trainingsruimte</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-box-number">50+</div>
+                <div class="stat-box-label">Premium Apparaten</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-box-number">15+</div>
+                <div class="stat-box-label">Gecertificeerde Trainers</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-box-number">24 / 7</div>
+                <div class="stat-box-label">Toegang Voor Leden</div>
             </div>
         </div>
 
-        <!-- Table Container Card -->
-        <div class="table-card">
-            <div class="table-toolbar">
-                <div class="search-box">
-                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                    <input type="text" id="searchInput" placeholder="Search by member name or phone...">
+        <!-- Over Ons / About Section -->
+        <section id="about" class="about-section">
+            <div class="about-grid">
+                <div class="about-text-content">
+                    <span class="section-tag">OVER ONZE SPORTSCHOOL</span>
+                    <h3>Meer dan zomaar een workout — jouw centrum voor fitheid</h3>
+                    <p>
+                        Bij <strong>Power Workout Gym</strong> geloven we dat een hoogwaardige omgeving leidt tot
+                        maximale resultaten voor onze leden. Bij het ontwerpen van onze sportschool hebben we gezorgd
+                        voor
+                        optimale ergonomie, moderne ventilatie en de hoogste kwaliteit kracht- en functionele
+                        apparatuur.
+                    </p>
+                    <p>
+                        Of je nu net begint met fitness of je voorbereidt op zware krachttraining — in onze community
+                        vind
+                        je de motivatie en ondersteuning die je zoekt.
+                    </p>
+                    <ul class="about-checklist">
+                        <li><i class="fa-solid fa-check"></i> Hoogwaardige krachtapparatuur en vrije gewichten (Eleiko,
+                            Rogue)</li>
+                        <li><i class="fa-solid fa-check"></i> Toegewijde baan voor functionele en motorische training
+                        </li>
+                        <li><i class="fa-solid fa-check"></i> Individuele begeleiding en InBody lichaamsanalyse</li>
+                        <li><i class="fa-solid fa-check"></i> Comfortabele kleedkamers met privé sauna en
+                            ontspanningsruimte</li>
+                    </ul>
                 </div>
-                <div class="filter-box">
-                    <i class="fa-solid fa-filter filter-icon"></i>
-                    <select id="statusFilter">
-                        <option value="all">All Statuses</option>
-                        <option value="active">Active</option>
-                        <option value="warning">Almost Expired</option>
-                        <option value="expired">Expired</option>
-                    </select>
+                <div class="about-highlight-card">
+                    <i class="fa-solid fa-quote-left quote-icon"></i>
+                    <p class="quote-text">
+                        "We hebben Power Workout Gym opgericht uit passie voor echte training. We wilden een industriële
+                        sfeer combineren met modern luxueus comfort en betrouwbare apparatuur."
+                    </p>
+                    <div class="quote-author">
+                        <div class="author-avatar">PW</div>
+                        <div class="author-info">
+                            <h4>Marek Kowalski</h4>
+                            <p>Hoofdtrainer & Oprichter</p>
+                        </div>
+                    </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- Strefy Treningowe / Training Zones Section -->
+        <section id="zones" class="zones-section">
+            <div class="section-header">
+                <span class="section-tag">GALERIE & ZONES</span>
+                <h2 class="section-title">Trainingszones Afgestemd Op Jouw Doelen</h2>
+                <p class="section-description">
+                    Elk gedeelte van onze sportschool is ontworpen met specifieke trainingsdoelen en
+                    maximaal comfort voor onze sporters in gedachten.
+                </p>
             </div>
 
-            <div class="table-responsive">
-                <table id="membersTable">
-                    <thead>
-                        <tr>
-                            <th>Member Name</th>
-                            <th>Phone Number</th>
-                            <th>Membership Type</th>
-                            <th>Expiry Date</th>
-                            <th>Status</th>
-                            <th class="text-right">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="members-table-body"></tbody>
-                </table>
+            <div class="zones-grid">
+                <!-- Zone 1: Strength Zone -->
+                <div class="zone-card">
+                    <div class="zone-image-wrapper">
+                        <img src="assets/images/zone-strength.jpg" alt="Vrije Gewichten Zone" class="zone-image">
+                        <span class="zone-badge">Krachtzone</span>
+                    </div>
+                    <div class="zone-card-body">
+                        <h3 class="zone-card-title">
+                            <i class="fa-solid fa-weight-hanging"></i> Vrije Gewichten & Kracht
+                        </h3>
+                        <p class="zone-card-desc">
+                            Ruim opgezette zone met Power Racks, weightlifting platforms van Eleiko en dumbbells tot 60
+                            kg. De ideale ruimte voor het opbouwen van pure kracht.
+                        </p>
+                        <div class="zone-features-tags">
+                            <span class="tag-item">Eleiko Stangen</span>
+                            <span class="tag-item">Dumbbells 1-60kg</span>
+                            <span class="tag-item">Power Racks</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Zone 2: Cardio Zone -->
+                <div class="zone-card">
+                    <div class="zone-image-wrapper">
+                        <img src="assets/images/zone-cardio.jpg" alt="Premium Cardio Zone" class="zone-image">
+                        <span class="zone-badge">Cardiozone</span>
+                    </div>
+                    <div class="zone-card-body">
+                        <h3 class="zone-card-title">
+                            <i class="fa-solid fa-person-running"></i> Cardio & Uithoudingsvermogen
+                        </h3>
+                        <p class="zone-card-desc">
+                            Loopbanden, crosstrainers en roeimachines met touchscreens en uitzicht op de
+                            stad. Train je uithoudingsvermogen in een comfortabele omgeving.
+                        </p>
+                        <div class="zone-features-tags">
+                            <span class="tag-item">Touchscreen Loopbanden</span>
+                            <span class="tag-item">AirBikes</span>
+                            <span class="tag-item">Hartslagmonitoren</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Zone 3: Functional Zone -->
+                <div class="zone-card">
+                    <div class="zone-image-wrapper">
+                        <img src="assets/images/zone-functional.jpg" alt="Functionele Trainingszone" class="zone-image">
+                        <span class="zone-badge">Functionele Zone</span>
+                    </div>
+                    <div class="zone-card-body">
+                        <h3 class="zone-card-title">
+                            <i class="fa-solid fa-bolt"></i> Functionele Training
+                        </h3>
+                        <p class="zone-card-desc">
+                            Kunstgrasbaan, Battle Ropes, kettlebells, medicijnballen en gewichtssleds.
+                            Volledige bewegingsvrijheid en algehele fitheid.
+                        </p>
+                        <div class="zone-features-tags">
+                            <span class="tag-item">Kunstgrasbaan</span>
+                            <span class="tag-item">Battle Ropes</span>
+                            <span class="tag-item">Kettlebells</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features / Voordelen Section -->
+        <section id="features" class="features-section">
+            <div class="section-header">
+                <span class="section-tag">LEDENVOORDELEN</span>
+                <h2 class="section-title">Waarom Kiezen Voor Power Workout Gym?</h2>
+                <p class="section-description">
+                    Wij bieden de sfeer en voorzieningen die van elke training een geweldige ervaring maken.
+                </p>
             </div>
 
-            <div class="table-footer">
-                <span class="showing-text">Showing <strong id="showingCount">0</strong> of <strong
-                        id="totalCount">0</strong>
-                    members</span>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fa-solid fa-gem"></i>
+                    </div>
+                    <h4>Premium Apparatuur</h4>
+                    <p>Alle apparaten en accessoires zijn afkomstig van vooraanstaande wereldwijde merken.</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fa-solid fa-user-ninja"></i>
+                    </div>
+                    <h4>Gecertificeerde Trainers</h4>
+                    <p>Ons team van experts staat klaar om je te helpen met je trainingsschema en techniek.</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                    <h4>24/7 Toegang</h4>
+                    <p>Volledige vrijheid om te trainen wanneer het jou het beste uitkomt, dag en nacht.</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fa-solid fa-wind"></i>
+                    </div>
+                    <h4>Airconditioning & Hygiëne</h4>
+                    <p>Continue luchtverversing en de hoogste normen op het gebied van hygiëne.</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fa-solid fa-hot-tub-person"></i>
+                    </div>
+                    <h4>Sauna & Wellness</h4>
+                    <p>Finse droge sauna beschikbaar na je workout voor sneller spierherstel.</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fa-solid fa-square-parking"></i>
+                    </div>
+                    <h4>Gratis Parkeren</h4>
+                    <p>Ruim en veilig parkeerterrein direct voor de ingang, exclusief voor leden.</p>
+                </div>
             </div>
-        </div>
+        </section>
+
+        <!-- Membership / Pricing Section -->
+        <section id="pricing" class="pricing-section">
+            <div class="section-header">
+                <span class="section-tag">AANBOD & ABONNEMENT</span>
+                <h2 class="section-title">Eén Eenvoudig All-Inclusive Abonnement</h2>
+                <p class="section-description">
+                    Alles wat je nodig hebt voor een effectieve workout voor één vaste prijs. Geen verborgen kosten en
+                    eenvoudige voorwaarden.
+                </p>
+            </div>
+
+            <div class="pricing-single-container">
+                <div class="pricing-card featured">
+                    <span class="popular-badge">ALL-INCLUSIVE PASS</span>
+                    <h3 class="pricing-plan-title">Open 24/7 Abonnement</h3>
+                    <div class="pricing-price">27 € <span>/ maand</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fa-solid fa-circle-check"></i> <strong>Onbeperkte 24/7 toegang</strong> tot de
+                            gehele club</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Volledige toegang tot alle zones: Kracht, Cardio en
+                            Functioneel</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Toegang tot de Finse sauna en wellnessruimte</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Maandelijks opzegbaar — flexibele voorwaarden</li>
+                        <li><i class="fa-solid fa-circle-check"></i> InBody lichaamsanalyse voor elk lid</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Gratis Wi-Fi, kluisje met cijferslot en gratis
+                            parkeren</li>
+                    </ul>
+                    <div class="pricing-notice">
+                        <i class="fa-solid fa-circle-info"></i> Abonnementen zijn uitsluitend verkrijgbaar bij de
+                        receptie van de sportschool.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--Checking pass expiry date-->
+        <section id="pass-check" class="pass-check-section">
+            <div class="section-header">
+                <span class="section-tag">PAS CHECK</span>
+                <h2 class="section-title">Check Je Pass Expiry Date</h2>
+                <p class="section-description">
+                    Voer je telefoonnummer in om de status van je abonnement te controleren.
+                </p>
+            </div>
+
+            <div class="pass-check-container">
+                <form id="passCheckForm" action="">
+                    <input type="tel" id="phoneNumber" placeholder="Telefoonnummer e.g. +31612234567" required>
+                    <button type="submit" class="btn-primary">Check</button>
+                </form>
+                <div id="result"></div>
+            </div>
+        </section>
+
+        <!-- Location & Contact Section -->
+        <section id="contact" class="info-section">
+            <div class="section-header">
+                <span class="section-tag">LOCATIE & CONTACT</span>
+                <h2 class="section-title">Kom Langs En Begin Met Trainen</h2>
+                <p class="section-description">
+                    Wij staan voor je klaar. Kom langs voor een kennismaking en bekijk de club met eigen ogen!
+                </p>
+            </div>
+
+            <div class="info-cards-grid">
+                <div class="info-card">
+                    <div class="info-card-icon">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <div class="info-card-content">
+                        <h5>Clubadres</h5>
+                        <p>Sportstraat 15<br>1000 AA Amsterdam</p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-icon">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                    <div class="info-card-content">
+                        <h5>Openingstijden Receptie</h5>
+                        <p>Ma-Vr: 06:00 - 22:00<br>Za-Zo: 08:00 - 20:00<br><em>(24/7 zone altijd geopend)</em></p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-icon">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <div class="info-card-content">
+                        <h5>Telefonisch Contact</h5>
+                        <p>+31 20 123 4567<br>+31 6 9876 5432</p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-icon">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <div class="info-card-content">
+                        <h5>E-mailadres</h5>
+                        <p>info@powerworkoutgym.nl<br>contact@powerworkoutgym.nl</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <dialog id="addMemberModal">
-        <div class="modal-header">
-            <div class="modal-header-info">
-                <div class="modal-icon" id="modalIcon">
-                    <i class="fa-solid fa-user-plus"></i>
-                </div>
-                <div>
-                    <h2 id="modalTitle">Add New Member</h2>
-                    <p id="modalSubTitle">Enter member details to create a new gym registration.</p>
-                </div>
-            </div>
-            <button type="button" class="modal-close-btn" id="closeModalIconBtn" aria-label="Close modal">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-        </div>
-
-        <!-- Add New Member Form -->
-        <form id="addMemberForm" class="modal-body">
-            <div class="form-grid">
-                <div class="form-group full-width">
-                    <label for="memberName"><i class="fa-solid fa-user"></i> Member Name</label>
-                    <div class="input-icon-wrapper">
-                        <i class="fa-solid fa-user input-icon"></i>
-                        <input type="text" id="memberName" name="memberName" placeholder="e.g. Alex Johnson" required>
-                    </div>
-                </div>
-
-                <div class="form-group full-width">
-                    <label for="memberPhone"><i class="fa-solid fa-phone"></i> Phone Number</label>
-                    <div class="input-icon-wrapper">
-                        <i class="fa-solid fa-phone input-icon"></i>
-                        <input type="tel" id="memberPhone" name="memberPhone" placeholder="e.g. +31612234567" required>
-                    </div>
-                    <div id="phoneMessage" class="message"></div>
-                </div>
-
-                <div class="form-group">
-                    <label for="passType"><i class="fa-solid fa-id-card"></i> Membership Type</label>
-                    <div class="input-icon-wrapper">
-                        <i class="fa-solid fa-id-card input-icon"></i>
-                        <select id="passType" name="passType" required>
-                            <option value="" disabled selected>Choose Type</option>
-                            <option value="week">1-week</option>
-                            <option value="month">1-month</option>
-                            <option value="2months">2-months</option>
-                            <option value="year">1-year</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="passExpiry"><i class="fa-solid fa-calendar-days"></i> Expiry Date</label>
-                    <div class="input-icon-wrapper">
-                        <i class="fa-solid fa-calendar-days input-icon"></i>
-                        <input type="date" id="passExpiry" name="passExpiry" required>
-                    </div>
-                </div>
-            </div>
-
-            <div class="modal-actions">
-                <button type="button" class="btn btn-secondary" id="cancelBtn">
-                    <i class="fa-solid fa-xmark"></i> Cancel
-                </button>
-                <button type="submit" class="btn btn-primary" id="saveMemberBtn">
-                    <i class="fa-solid fa-check"></i> <span id="saveBtnText">Save Member</span>
-                </button>
-            </div>
-        </form>
-    </dialog>
-
+    <!-- Site Footer -->
     <footer class="site-footer">
         <div class="footer-container">
-            <p><strong>Power Workout Gym</strong> &bull; All rights reserved &bull; &copy; 2026</p>
+            <p>&copy; 2026 <strong>Power Workout Gym</strong>. Alle rechten voorbehouden. Premium Fitness & Community.
+            </p>
         </div>
     </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="js/main.js"></script>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/homepage.js"></script>
 
 </html>

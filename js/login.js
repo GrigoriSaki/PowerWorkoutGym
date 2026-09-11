@@ -3,6 +3,15 @@ const SUPABASE_ANON_KEY = 'sb_publishable_GTcWstIUeVS2YVQaQEb4Tw_MgXXR4Od';
 
 const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
+async function checkExistingSession() {
+    const { data: { session } } = await supabaseClient.auth.getSession();
+    if (session) {
+        window.location.href = 'admin.html';
+    }
+}
+
+checkExistingSession();
+
 const loginForm = document.getElementById('loginForm');
 
 loginForm.addEventListener('submit', async (e) => {
@@ -42,5 +51,5 @@ loginForm.addEventListener('submit', async (e) => {
         return;
     }
 
-    window.location.href = 'index.html';
+    window.location.href = 'admin.html';
 });
