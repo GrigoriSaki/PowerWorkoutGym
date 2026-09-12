@@ -712,3 +712,59 @@
     transform: translateY(-2px);
     box-shadow: var(--shadow-glow);
 }
+
+/* --- HAMBURGER MENU STYLES --- */
+
+.hamburger-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 8px;
+    color: #333;
+}
+
+@media (max-width: 768px) {
+    .hamburger-btn {
+        display: block;
+    }
+
+    .nav-bar ul {
+        display: none;
+        flex-direction: column;
+    }
+
+    .nav-bar ul.active {
+        display: flex;
+    }
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: row;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        position: relative;
+    }
+
+    .hamburger-btn {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+    }
+
+    .nav-bar ul.active {
+        left: 0;
+        width: 100%;
+    }
+}
