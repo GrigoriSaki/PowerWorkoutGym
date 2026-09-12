@@ -8,6 +8,13 @@ hamburgerBtn.addEventListener('click', () => {
     hamburgerBtn.classList.toggle("active");
 });
 
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        hamburgerBtn.classList.remove('active');
+    });
+});
+
 document.getElementById("passCheckForm").addEventListener("submit", async (e) => {
     e.preventDefault();
 
