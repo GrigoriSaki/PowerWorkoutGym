@@ -3,11 +3,9 @@ const SUPABASE_ANON_KEY = 'sb_publishable_GTcWstIUeVS2YVQaQEb4Tw_MgXXR4Od';
 
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-const hamburgerBtn = document.getElementById('hamburgerBtn');
-const navMenu = document.getElementById('navMenu');
-
 hamburgerBtn.addEventListener('click', () => {
     navMenu.classList.toggle('active');
+    hamburgerBtn.classList.toggle("active");
 });
 
 document.getElementById("passCheckForm").addEventListener("submit", async (e) => {
