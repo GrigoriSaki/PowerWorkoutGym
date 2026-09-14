@@ -280,7 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const existingPhone = allMembers.some(m => m.phone === phone);
 
-        if (existingPhone) {
+        if (existingPhone && editingMemberId == null) {
             const message = document.getElementById("phoneMessage");
             message.className = "phone-validation-message error";
             message.textContent =
