@@ -66,6 +66,8 @@ async function loadMembers() {
 
 // open modal in Add mode
 function openAddModal() {
+    const message = document.getElementById("phoneMessage");
+    message.style.display = "none";
     editingMemberId = null;
     const addMemberForm = document.getElementById('addMemberForm');
     if (addMemberForm) addMemberForm.reset();
@@ -75,10 +77,10 @@ function openAddModal() {
     const iconEl = document.getElementById('modalIcon');
     const btnTextEl = document.getElementById('saveBtnText');
 
-    if (titleEl) titleEl.textContent = 'Add New Member';
-    if (subtitleEl) subtitleEl.textContent = 'Enter member details to create a new gym registration.';
+    if (titleEl) titleEl.textContent = 'Nieuw lid toevoegen';
+    if (subtitleEl) subtitleEl.textContent = 'Voer de gegevens van het lid in om een nieuwe inschrijving bij de sportschool aan te maken.';
     if (iconEl) iconEl.innerHTML = '<i class="fa-solid fa-user-plus"></i>';
-    if (btnTextEl) btnTextEl.textContent = 'Save Member';
+    if (btnTextEl) btnTextEl.textContent = 'Opslaan';
 
     const addMemberModal = document.getElementById('addMemberModal');
     if (addMemberModal) addMemberModal.showModal();
@@ -86,6 +88,8 @@ function openAddModal() {
 
 // open modal in Edit mode with populated data
 function openEditModal(memberId) {
+    const message = document.getElementById("phoneMessage");
+    message.style.display = "none";
     const member = allMembers.find(m => String(m.id) === String(memberId));
     if (!member) return;
 
@@ -111,10 +115,10 @@ function openEditModal(memberId) {
     const iconEl = document.getElementById('modalIcon');
     const btnTextEl = document.getElementById('saveBtnText');
 
-    if (titleEl) titleEl.textContent = 'Edit Member';
-    if (subtitleEl) subtitleEl.textContent = 'Update member details and membership expiration.';
+    if (titleEl) titleEl.textContent = 'Lid bewerken';
+    if (subtitleEl) subtitleEl.textContent = 'Werk de gegevens en vervaldatum van het lid bij.';
     if (iconEl) iconEl.innerHTML = '<i class="fa-solid fa-user-pen"></i>';
-    if (btnTextEl) btnTextEl.textContent = 'Update Member';
+    if (btnTextEl) btnTextEl.textContent = 'Bijwerken';
 
     const addMemberModal = document.getElementById('addMemberModal');
     if (addMemberModal) addMemberModal.showModal();
@@ -174,11 +178,11 @@ function getStatusBadge(expiryDate) {
     const type = getStatusType(expiryDate);
 
     if (type === 'expired') {
-        return `<span class="status-badge status-expired"><span class="pulse-dot"></span> Expired</span>`;
+        return `<span class="status-badge status-expired"><span class="pulse-dot"></span> Verlopen</span>`;
     } else if (type === 'warning') {
-        return `<span class="status-badge status-warning"><span class="pulse-dot"></span> Almost Expired</span>`;
+        return `<span class="status-badge status-warning"><span class="pulse-dot"></span> Bijna</span>`;
     } else {
-        return `<span class="status-badge status-active"> Active</span>`;
+        return `<span class="status-badge status-active"> Actief</span>`;
     }
 }
 
@@ -261,6 +265,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Handle form submission for both add and edit
     async function handleSaveMember(e) {
         e.preventDefault();
+        const message = document.getElementById("phoneMessage");
+        message.style.display = "none";
 
         const name = document.getElementById('memberName').value.trim();
         const phone = document.getElementById('memberPhone').value.trim()
@@ -270,7 +276,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const phoneRegex = /^\+\d{8,15}$/;
         if (!phoneRegex.test(phone)) {
-            const message = document.getElementById("phoneMessage");
             message.className = "phone-validation-message error";
             message.textContent =
                 "Gebruik een internationaal nummer, bijvoorbeeld +31612345678";
@@ -278,10 +283,9 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const existingPhone = allMembers.some(m => m.phone === phone);
+        const existingPhone = allMembers.some(m => m.phone === phone && m.id !== editingMemberId);
 
-        if (existingPhone && editingMemberId == null) {
-            const message = document.getElementById("phoneMessage");
+        if (existingPhone) {
             message.className = "phone-validation-message error";
             message.textContent =
                 "Dit telefoonnummer is al geregistreerd in het systeem.";

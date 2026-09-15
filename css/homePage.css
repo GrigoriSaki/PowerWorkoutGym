@@ -46,6 +46,32 @@ body {
     padding: 4rem 3rem;
 }
 
+.hero-brand-header {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.hero-brand-logo {
+    height: 84px;
+    width: auto;
+    max-width: 220px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 18px rgba(255, 87, 34, 0.45));
+    background: rgba(255, 255, 255, 0.08);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    transition: transform 0.3s ease;
+}
+
+.hero-brand-logo:hover {
+    transform: scale(1.04);
+}
+
 .hero-badge {
     display: inline-flex;
     align-items: center;
@@ -61,7 +87,7 @@ body {
     font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
-    margin-bottom: 1.25rem;
+    margin-bottom: 0;
 }
 
 .hero-title {
@@ -288,6 +314,17 @@ body {
     align-items: center;
     justify-content: center;
     font-family: var(--font-heading);
+}
+
+.author-logo-avatar {
+    width: 52px;
+    height: 52px;
+    object-fit: contain;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 2px solid var(--primary);
+    padding: 3px;
+    box-shadow: 0 2px 10px rgba(255, 87, 34, 0.35);
 }
 
 .author-info h4 {
@@ -597,8 +634,46 @@ body {
 
 .info-cards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(6, 1fr);
     gap: 1.5rem;
+}
+
+.info-cards-grid .info-card:nth-child(1),
+.info-cards-grid .info-card:nth-child(2),
+.info-cards-grid .info-card:nth-child(3) {
+    grid-column: span 2;
+}
+
+.info-cards-grid .info-card:nth-child(4),
+.info-cards-grid .info-card:nth-child(5) {
+    grid-column: span 3;
+}
+
+@media (max-width: 992px) {
+    .info-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .info-cards-grid .info-card:nth-child(1),
+    .info-cards-grid .info-card:nth-child(2),
+    .info-cards-grid .info-card:nth-child(3),
+    .info-cards-grid .info-card:nth-child(4) {
+        grid-column: span 1;
+    }
+
+    .info-cards-grid .info-card:nth-child(5) {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 640px) {
+    .info-cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .info-cards-grid .info-card {
+        grid-column: span 1 !important;
+    }
 }
 
 .info-card {
@@ -639,6 +714,97 @@ body {
     color: var(--text-secondary);
     line-height: 1.5;
     word-break: break-all;
+}
+
+.info-card-content a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color var(--transition-fast, 0.2s ease);
+}
+
+.info-card-content a:hover {
+    color: var(--primary);
+    text-decoration: underline;
+}
+
+/* Social links in contact info card */
+.social-links-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-top: 0.25rem;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color var(--transition-fast, 0.2s ease), transform var(--transition-fast, 0.2s ease);
+}
+
+.social-link i {
+    font-size: 1.05rem;
+    width: 16px;
+    text-align: center;
+}
+
+.social-link.facebook:hover {
+    color: #1877f2;
+    text-decoration: none;
+    transform: translateX(2px);
+}
+
+.social-link.instagram:hover {
+    color: #e1306c;
+    text-decoration: none;
+    transform: translateX(2px);
+}
+
+/* Footer social links styling */
+.footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.footer-social-links {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.footer-social-links span {
+    font-weight: 600;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+.footer-social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #f1f5f9;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border: 1px solid #cbd5e1;
+    font-size: 0.9rem;
+}
+
+.footer-social-links a:hover {
+    background: var(--primary);
+    color: #ffffff;
+    border-color: var(--primary);
+    transform: translateY(-2px);
 }
 
 /* Responsive Tweaks */

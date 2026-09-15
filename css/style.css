@@ -105,9 +105,10 @@ body {
 }
 
 .logo-img {
-    height: 44px;
-    width: 44px;
-    object-fit: cover;
+    height: 52px;
+    width: auto;
+    max-width: 140px;
+    object-fit: contain;
     border-radius: var(--radius-sm);
     border: 1px solid rgba(255, 87, 34, 0.3);
     box-shadow: 0 2px 8px rgba(255, 87, 34, 0.2);
