@@ -30,7 +30,7 @@ loginForm.addEventListener('submit', async (e) => {
     const originalBtnText = submitBtn ? submitBtn.innerHTML : '';
     if (submitBtn) {
         submitBtn.disabled = true;
-        submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Logowanie...';
+        submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Loading...';
     }
 
     const { data, error } = await supabaseClient.auth.signInWithPassword({
@@ -40,10 +40,9 @@ loginForm.addEventListener('submit', async (e) => {
 
     if (error) {
         if (errorEl) {
-            errorEl.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> Błędny e-mail lub hasło.';
+            errorEl.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> Onjuist e-mailadres of wachtwoord.';
             errorEl.style.display = 'flex';
         }
-        console.error(error);
         if (submitBtn) {
             submitBtn.disabled = false;
             submitBtn.innerHTML = originalBtnText;

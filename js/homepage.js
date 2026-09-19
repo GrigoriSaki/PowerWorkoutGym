@@ -40,7 +40,7 @@ document.getElementById("passCheckForm").addEventListener("submit", async (e) =>
         )
     `)
         .eq('phone', phoneNumber)
-        .single();
+        .maybeSingle();
 
     if (error || !data || !data.passes.length) {
         result.innerHTML = "Geen lid gevonden.";

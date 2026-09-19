@@ -89,13 +89,25 @@
 }
 
 .btn-secondary {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    text-align: center;
+    width: 100%;
+    margin-top: 5px;
+    padding: 12px 24px;
     background: linear-gradient(135deg, #5e3fd3 0%, #362597 100%);
     color: white;
     text-decoration: none;
     border-radius: 8px;
     font-weight: 600;
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(135deg, #4c32b5 0%, #2a1c7a 100%);
+    color: white;
+    text-decoration: none;
+    transform: translateY(-2px);
 }
