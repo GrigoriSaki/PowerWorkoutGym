@@ -206,6 +206,7 @@ body {
 
 /* About Gym Section */
 .about-section {
+    scroll-margin-top: 80px;
     margin-bottom: 4.5rem;
 }
 
@@ -341,6 +342,7 @@ body {
 
 /* Gym Zones Gallery Section */
 .zones-section {
+    scroll-margin-top: 80px;
     margin-bottom: 4.5rem;
 }
 
@@ -448,8 +450,201 @@ body {
     border-radius: var(--radius-sm);
 }
 
+/* Trainers Section - Unified Single Block */
+.trainers-section {
+    scroll-margin-top: 100px;
+    margin-bottom: 4.5rem;
+}
+
+.trainers-single-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: 3rem 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 3rem;
+    align-items: center;
+    transition: var(--transition);
+}
+
+.trainers-single-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: rgba(255, 87, 34, 0.25);
+}
+
+/* Asymmetric Dual Image Layout */
+.trainers-images-wrapper {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    min-height: 380px;
+}
+
+.trainer-img-box {
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    border: 3px solid #ffffff;
+    transition: var(--transition);
+}
+
+.trainer-img-box:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.trainer-img-box.main-img {
+    width: 72%;
+    height: 350px;
+    z-index: 1;
+}
+
+.trainer-img-box.sub-img {
+    width: 52%;
+    height: 240px;
+    position: absolute;
+    bottom: -15px;
+    right: 0;
+    z-index: 2;
+    border: 4px solid #ffffff;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.trainer-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+}
+
+.trainer-photo-badge {
+    position: absolute;
+    bottom: 0.75rem;
+    left: 0.75rem;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #ffffff;
+    font-family: var(--font-heading);
+    font-size: 0.725rem;
+    font-weight: 700;
+    padding: 0.25rem 0.65rem;
+    border-radius: var(--radius-full);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Content Area */
+.trainers-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.trainers-title {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1.25;
+    margin: 0.4rem 0 1.25rem 0;
+}
+
+.trainers-general-desc {
+    color: var(--text-secondary);
+    font-size: 0.98rem;
+    line-height: 1.65;
+    margin-bottom: 1.5rem;
+}
+
+.trainers-general-desc p {
+    margin-bottom: 0.85rem;
+}
+
+.trainers-general-desc p:last-child {
+    margin-bottom: 0;
+}
+
+.trainers-highlights {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.trainers-highlights li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.trainers-highlights i {
+    color: var(--primary);
+    background: rgba(255, 87, 34, 0.1);
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+}
+
+/* Responsive for Trainers Single Card */
+@media (max-width: 992px) {
+    .trainers-single-card {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        padding: 2.25rem 1.75rem;
+    }
+
+    .trainers-images-wrapper {
+        min-height: 320px;
+        max-width: 480px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .trainer-img-box.main-img {
+        height: 300px;
+    }
+
+    .trainer-img-box.sub-img {
+        height: 210px;
+    }
+}
+
+@media (max-width: 480px) {
+    .trainers-images-wrapper {
+        min-height: 260px;
+    }
+
+    .trainer-img-box.main-img {
+        width: 78%;
+        height: 240px;
+    }
+
+    .trainer-img-box.sub-img {
+        width: 58%;
+        height: 170px;
+        bottom: -10px;
+    }
+
+    .trainers-title {
+        font-size: 1.65rem;
+    }
+}
+
 /* Features Grid */
 .features-section {
+    scroll-margin-top: 30px;
     margin-bottom: 4.5rem;
     background: #ffffff;
     border: 1px solid var(--border-color);
@@ -507,6 +702,7 @@ body {
 
 /* Pricing Section */
 .pricing-section {
+    scroll-margin-top: 80px;
     margin-bottom: 4.5rem;
 }
 
@@ -653,6 +849,7 @@ body {
 
 /* Contact & Info Section */
 .info-section {
+    scroll-margin-top: 100px;
     margin-bottom: 3.5rem;
 }
 
