@@ -210,6 +210,12 @@ body {
     margin-bottom: 4.5rem;
 }
 
+@media (max-width: 992px) {
+    .about-section {
+        scroll-margin-top: 60px;
+    }
+}
+
 .about-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -346,6 +352,12 @@ body {
     margin-bottom: 4.5rem;
 }
 
+@media (max-width: 992px) {
+    .zones-section {
+        scroll-margin-top: 60px;
+    }
+}
+
 .zones-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -454,6 +466,12 @@ body {
 .trainers-section {
     scroll-margin-top: 100px;
     margin-bottom: 4.5rem;
+}
+
+@media (max-width: 992px) {
+    .trainers-section {
+        scroll-margin-top: 60px;
+    }
 }
 
 .trainers-single-card {
@@ -653,6 +671,12 @@ body {
     box-shadow: var(--shadow-sm);
 }
 
+@media(max-width: 992px) {
+    .features-section {
+        scroll-margin-top: 60px;
+    }
+}
+
 .features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -704,6 +728,12 @@ body {
 .pricing-section {
     scroll-margin-top: 80px;
     margin-bottom: 4.5rem;
+}
+
+@media(max-width: 992px) {
+    .pricing-section {
+        scroll-margin-top: 60px;
+    }
 }
 
 .pricing-grid {
@@ -851,6 +881,12 @@ body {
 .info-section {
     scroll-margin-top: 100px;
     margin-bottom: 3.5rem;
+}
+
+@media(max-width: 992px) {
+    .info-section {
+        scroll-margin-top: 60px;
+    }
 }
 
 .info-cards-grid {
@@ -1245,7 +1281,10 @@ body {
     text-decoration: none;
     font-weight: 600;
     transition: color 0.2s ease, text-decoration 0.2s ease;
+    margin: 0 0.5rem;
+    display: inline-block;
 }
+
 
 .footer-link:hover {
     color: var(--primary-hover);
