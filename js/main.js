@@ -180,7 +180,7 @@ function getStatusBadge(expiryDate) {
     if (type === 'expired') {
         return `<span class="status-badge status-expired"><span class="pulse-dot"></span> Verlopen</span>`;
     } else if (type === 'warning') {
-        return `<span class="status-badge status-warning"><span class="pulse-dot"></span> Bijna</span>`;
+        return `<span class="status-badge status-warning"> Verloopt binnenkort</span>`;
     } else {
         return `<span class="status-badge status-active"> Actief</span>`;
     }
